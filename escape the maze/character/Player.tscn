@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://character/character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://character/Player.gd" type="Script" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+vframes = 4
+frame = 4
+
+[node name="Camera2D" type="Camera2D" parent="." index="8"]
+zoom = Vector2( 0.5, 0.5 )
