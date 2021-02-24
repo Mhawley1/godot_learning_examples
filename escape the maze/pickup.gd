@@ -1,8 +1,11 @@
 extends Area2D
 
+signal coin_pickup
+
 var textures = {
 	'coin': 'res://assets/coin.png',
 	'key_red': 'res://assets/keyRed.png',
+	'key_green': 'res://assets/keygreen.png',
 	'star': 'res://assets/star.png'
 	}
 
@@ -25,3 +28,10 @@ func init(_type, pos):   # function that takes in the type and Position and sets
 func _on_Tween_tween_completed(object, key):
 	queue_free() # remove the pickup node or whater item 
 	# it is !!!!!!!!!
+	
+func pickup():
+	match type:
+		'coin':
+			emit_signal('coin_pickup', 1)
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Tween.start()

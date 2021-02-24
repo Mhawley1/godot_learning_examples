@@ -43,7 +43,11 @@ func _on_MoveTween_tween_completed(object, key):
 
 func _on_character_area_entered(area):
 	if area.is_in_group('enemies'):
-		print("your in enemies group")
+		area.hide()
+		set_process(false)
+		$CollisionShape2D.set_deferred("disabled", true)
+		$AnimationPlayer.play("die")
+		yield($AnimationPlayer, "animation_finished")
 		emit_signal('dead')
 	if area.has_method('pickup'):
 		print("we have an item")

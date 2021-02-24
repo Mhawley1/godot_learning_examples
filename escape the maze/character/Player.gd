@@ -1,6 +1,7 @@
 extends "res://character/character.gd"
 
-
+func _ready():
+	$Sprite.scale = Vector2(1,1)
 signal moved 
 
 func _process(delta):
